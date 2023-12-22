@@ -39,8 +39,9 @@
           <div class="col-md-12 p-3" *ngFor="let pizza of menu[0].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
             <ul style="list-style-type: none;">
-              <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
-            </ul>
+              <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+                <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+                </div>            </ul>
             <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
           </div>
         </div></div>
@@ -51,8 +52,9 @@
           <div class="col-md-6 p-3" *ngFor="let pizza of menu[1].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
             <ul style="list-style-type: none;">
-              <li *ngFor="let ingredient of pizza.ingredients"><span class="bg-dark p-1 rounded">{{ ingredient }}</span></li>
-            </ul>
+              <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+                <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+                </div>            </ul>
             <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
           </div>
         </div></div>
@@ -61,8 +63,9 @@
           <div class="col-md-6 p-3" *ngFor="let pizza of menu[3].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
             <ul style="list-style-type: none;">
-              <li *ngFor="let ingredient of pizza.ingredients"><span class="bg-dark p-1 rounded">{{ ingredient }}</span></li>
-            </ul>
+              <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+                <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+                </div>            </ul>
             <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
           </div>
         </div></div>
@@ -71,8 +74,9 @@
             <div class="col-md-6 p-3" *ngFor="let pizza of menu[4].items">
               <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
               <ul style="list-style-type: none;">
-                <li *ngFor="let ingredient of pizza.ingredients"><span class="bg-dark p-1 rounded">{{ ingredient }}</span></li>
-              </ul>
+                <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+                  <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+                  </div>              </ul>
               <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
             </div>
           </div></div>
@@ -81,8 +85,9 @@
               <div class="col-md-6 p-3" *ngFor="let pizza of menu[5].items">
                 <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
                 <ul style="list-style-type: none;">
-                  <li *ngFor="let ingredient of pizza.ingredients"><span class="bg-dark p-1 rounded">{{ ingredient }}</span></li>
-                </ul>
+                  <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+                    <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+                    </div>                </ul>
                 <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
               </div>
             </div></div>
@@ -94,7 +99,9 @@
     <div class="col-md-6 p-3" *ngFor="let pizza of menu[2].items">
       <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
       <ul style="list-style-type: none;">
-        <li *ngFor="let ingredient of pizza.ingredients"><span class="bg-dark p-1 rounded">{{ ingredient }}</span></li>
+        <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+        <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+        </div>
       </ul>
       <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
     </div>
@@ -104,8 +111,9 @@
       <div class="col-md-6 p-3" *ngFor="let pizza of menu[6].items">
         <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
         <ul style="list-style-type: none;">
-          <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
-        </ul>
+          <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+            <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+            </div>        </ul>
         <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
       </div>
     </div></div>
@@ -114,8 +122,9 @@
         <div class="col-md-6 p-3" *ngFor="let pizza of menu[7].items">
           <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
           <ul style="list-style-type: none;">
-            <li *ngFor="let ingredient of pizza.ingredients"><span class="bg-dark p-1 rounded">{{ ingredient }}</span></li>
-          </ul>
+            <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+              <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+              </div>          </ul>
           <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
         </div>
       </div></div>
@@ -124,8 +133,9 @@
           <div class="col-md-12 p-3" *ngFor="let pizza of menu[8].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
             <ul style="list-style-type: none;">
-              <li *ngFor="let ingredient of pizza.ingredients"><span class="bg-dark p-1 rounded">{{ ingredient }}</span></li>
-            </ul>
+              <div style="width: fit-content;" class="bg-dark p-1 rounded border shadow m-auto">
+                <li *ngFor="let ingredient of pizza.ingredients"><span class=" p-1 rounded">{{ ingredient }}</span></li>
+                </div>            </ul>
             <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
           </div>
         </div></div>
