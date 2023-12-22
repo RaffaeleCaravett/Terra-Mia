@@ -1,3 +1,12 @@
-body{
+.bg-transparent{
   background: url('../../../assets/Background-images/home/body/bg.jpg');
+}
+.img{
+  height: 100px;
+}
+.text-dark{
+  text-shadow: 3px 3px 3px white;
+}
+.text-danger,.text-light{
+  text-shadow: 3px 3px 3px black;
 }

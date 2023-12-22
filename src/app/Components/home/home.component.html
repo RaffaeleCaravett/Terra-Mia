@@ -1,17 +1,136 @@
-<body class="w-100">
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 p-2">
-<p class="p-3 text-white fw-bolder" style="font-size: 45px;">
-  <mat-icon>keyboard_arrow_down</mat-icon>
- The owner <mat-icon>keyboard_arrow_down</mat-icon>
+<body >
+<div class="row bg-transparent text-center">
+    <div class="col-md-12 p-4 ">
+<p class="p-3 text-light fw-bolder" style="font-size: 45px;">
+  <mat-icon class="text-success fw-bolder">keyboard_arrow_down</mat-icon>
+ The owner <mat-icon class="text-danger fw-bolder">keyboard_arrow_down</mat-icon>
   </p>
-<img src="../../../assets/Background-images/home/container/Piero.jpg" alt="Piero_Amato" class="rounded border shadow">
+  <div class="row">
+    <div class="col-md-12 py-4">
+      <img src="../../../assets/Background-images/home/container/Piero.jpg" alt="Piero_Amato" class="rounded border italy-flag w-50" data-aos="zoom-in" data-aos-duration="3000">
     </div>
-    <div class="col-md-6 p-2">
-      <div>
+    <div class="col-md-12  py-4 w-50 m-auto">
+      <div class="rounded bg-dark p-2 italy-flag"  data-aos="fade-left" data-aos-duration="3000">
+        <p class="fs-4 text-light fw-bold">
+         Credo che l'utilizzo di materie prime di qualità , la lievitazione oltre le 48 ore dell'impasto, la predisposizione della sala facciano la differenza nell'esperienza dei nostri clienti.
+      Fin dalla nostra apertura rispettiamo il nostro credo: Fornirci solo da aziende del territorio. Da questo nasce terra mia. Una valorizzazione della nostra terra, garantendo al palato un sapore
+      unico, come quello della nostra presila. - <span class="text-success">Piero Amato ®</span>
+      </p>
       </div>
     </div>
   </div>
+    </div>
+    <div class="col-md-12 p-4 text-light my-4">
+      <h1 class="fw-bolder" style="font-size: 45px;">
+       Cosa puoi trovare da noi :
+      </h1>
+      <ul style="list-style-type: none;" class="fs-4 m-auto">
+<li class="fs-2">{{title}}</li>
+<img src="{{image}}" alt="" class="w-50 rounded italy-flag" style="max-height: 500px" data-aos="zoom-out" data-aos-duration="3000">
+      </ul>
+      <div>
+      </div>
+    </div>
+    <div class="col-md-12 p-2 text-light my-4">
+<h1 class="fw-bolder" style="font-size: 45px;">Il nostro menù</h1>
+<div class="row">
+  <div class="col-md-12 p-2 border-bottom border-white"  data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[0].categoryName}} <span class="fs-2">💝</span></h1>
+        <div class="row">
+          <div class="col-md-12 p-3" *ngFor="let pizza of menu[0].items">
+            <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+            <ul style="list-style-type: none;">
+              <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+            </ul>
+            <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+          </div>
+        </div></div>
+  <div class="col-md-6 p-2">
+    <div class="row">
+      <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[1].categoryName}} <span class="fs-2">🍟</span></h1>
+        <div class="row">
+          <div class="col-md-6 p-3" *ngFor="let pizza of menu[1].items">
+            <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+            <ul style="list-style-type: none;">
+              <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+            </ul>
+            <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+          </div>
+        </div></div>
+      <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[3].categoryName}} <span class="fs-2">🐷</span></h1>
+        <div class="row">
+          <div class="col-md-6 p-3" *ngFor="let pizza of menu[3].items">
+            <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+            <ul style="list-style-type: none;">
+              <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+            </ul>
+            <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+          </div>
+        </div></div>
+        <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[4].categoryName}} <span class="fs-2">🍫</span></h1>
+          <div class="row">
+            <div class="col-md-6 p-3" *ngFor="let pizza of menu[4].items">
+              <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+              <ul style="list-style-type: none;">
+                <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+              </ul>
+              <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+            </div>
+          </div></div>
+          <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[5].categoryName}} <span class="fs-2">🥤</span></h1>
+            <div class="row">
+              <div class="col-md-6 p-3" *ngFor="let pizza of menu[5].items">
+                <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+                <ul style="list-style-type: none;">
+                  <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+                </ul>
+                <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+              </div>
+            </div></div>
+    </div>
+
+  </div>
+  <div class="col-md-6 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[2].categoryName}} <span class="fs-2">🍕</span></h1>
+  <div class="row">
+    <div class="col-md-6 p-3" *ngFor="let pizza of menu[2].items">
+      <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+      <ul style="list-style-type: none;">
+        <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+      </ul>
+      <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+    </div>
+  </div></div>
+  <div class="col-md-6 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[6].categoryName}} <span class="fs-2">🍷</span></h1>
+    <div class="row">
+      <div class="col-md-6 p-3" *ngFor="let pizza of menu[6].items">
+        <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+        <ul style="list-style-type: none;">
+          <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+        </ul>
+        <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+      </div>
+    </div></div>
+    <div class="col-md-6 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[7].categoryName}} <span class="fs-2">☕</span></h1>
+      <div class="row">
+        <div class="col-md-6 p-3" *ngFor="let pizza of menu[7].items">
+          <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+          <ul style="list-style-type: none;">
+            <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+          </ul>
+          <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+        </div>
+      </div></div>
+      <div class="col-md-6 p-2" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[8].categoryName}} <span class="fs-2">🪑</span></h1>
+        <div class="row">
+          <div class="col-md-12 p-3" *ngFor="let pizza of menu[8].items">
+            <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
+            <ul style="list-style-type: none;">
+              <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+            </ul>
+            <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
+          </div>
+        </div></div>
 </div>
+    </div>
+  </div>
+<app-footer></app-footer>
 </body>
