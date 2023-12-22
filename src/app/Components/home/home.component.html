@@ -9,8 +9,8 @@
     <div class="col-md-12 py-4">
       <img src="../../../assets/Background-images/home/container/Piero.jpg" alt="Piero_Amato" class="rounded border italy-flag w-50" data-aos="zoom-in" data-aos-duration="3000">
     </div>
-    <div class="col-md-12  py-4 w-50 m-auto">
-      <div class="rounded bg-dark p-2 italy-flag"  data-aos="fade-left" data-aos-duration="3000">
+    <div class="col-md-12 my-5 py-5 bg-dark">
+      <div class="rounded w-50 m-auto p-2 italy-flag"  data-aos="fade-left" data-aos-duration="3000">
         <p class="fs-4 text-light fw-bold">
          Credo che l'utilizzo di materie prime di qualità , la lievitazione oltre le 48 ore dell'impasto, la predisposizione della sala facciano la differenza nell'esperienza dei nostri clienti.
       Fin dalla nostra apertura rispettiamo il nostro credo: Fornirci solo da aziende del territorio. Da questo nasce terra mia. Una valorizzazione della nostra terra, garantendo al palato un sapore
@@ -34,7 +34,7 @@
     <div class="col-md-12 p-2 text-light my-4">
 <h1 class="fw-bolder" style="font-size: 45px;">Il nostro menù</h1>
 <div class="row">
-  <div class="col-md-12 p-2 border-bottom border-white"  data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[0].categoryName}} <span class="fs-2">💝</span></h1>
+  <div class="col-md-12 p-2 border-bottom border-white bg-success my-5 py-5"  data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[0].categoryName}} <span class="fs-2">💝</span></h1>
         <div class="row">
           <div class="col-md-12 p-3" *ngFor="let pizza of menu[0].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -46,7 +46,7 @@
         </div></div>
   <div class="col-md-6 p-2">
     <div class="row">
-      <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[1].categoryName}} <span class="fs-2">🍟</span></h1>
+      <div class="col-md-12 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1 class="bg-dark py-2">{{menu[1].categoryName}} <span class="fs-2">🍟</span></h1>
         <div class="row">
           <div class="col-md-6 p-3" *ngFor="let pizza of menu[1].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -56,7 +56,7 @@
             <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
           </div>
         </div></div>
-      <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[3].categoryName}} <span class="fs-2">🐷</span></h1>
+      <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1 class="bg-dark py-2">{{menu[3].categoryName}} <span class="fs-2">🐷</span></h1>
         <div class="row">
           <div class="col-md-6 p-3" *ngFor="let pizza of menu[3].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -66,7 +66,7 @@
             <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
           </div>
         </div></div>
-        <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[4].categoryName}} <span class="fs-2">🍫</span></h1>
+        <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1 class="bg-dark py-2">{{menu[4].categoryName}} <span class="fs-2">🍫</span></h1>
           <div class="row">
             <div class="col-md-6 p-3" *ngFor="let pizza of menu[4].items">
               <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -76,7 +76,7 @@
               <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
             </div>
           </div></div>
-          <div class="col-md-12 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[5].categoryName}} <span class="fs-2">🥤</span></h1>
+          <div class="col-md-12 p-2 border-white" data-aos="fade-up" data-aos-duration="3000"><h1 class="bg-dark py-2">{{menu[5].categoryName}} <span class="fs-2">🥤</span></h1>
             <div class="row">
               <div class="col-md-6 p-3" *ngFor="let pizza of menu[5].items">
                 <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -89,7 +89,7 @@
     </div>
 
   </div>
-  <div class="col-md-6 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[2].categoryName}} <span class="fs-2">🍕</span></h1>
+  <div class="col-md-6 p-2 border-white" data-aos="fade-up" data-aos-duration="3000"><h1 class="bg-dark py-2">{{menu[2].categoryName}} <span class="fs-2">🍕</span></h1>
   <div class="row">
     <div class="col-md-6 p-3" *ngFor="let pizza of menu[2].items">
       <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -99,7 +99,7 @@
       <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
     </div>
   </div></div>
-  <div class="col-md-6 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[6].categoryName}} <span class="fs-2">🍷</span></h1>
+  <div class="col-md-12 p-2 border-bottom border-white bg-warning my-5" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[6].categoryName}} <span class="fs-2">🍷</span></h1>
     <div class="row">
       <div class="col-md-6 p-3" *ngFor="let pizza of menu[6].items">
         <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -109,7 +109,7 @@
         <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
       </div>
     </div></div>
-    <div class="col-md-6 p-2 border-bottom border-white" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[7].categoryName}} <span class="fs-2">☕</span></h1>
+    <div class="col-md-6 p-2 border-white" data-aos="fade-up" data-aos-duration="3000"><h1 class="bg-dark py-2">{{menu[7].categoryName}} <span class="fs-2">☕</span></h1>
       <div class="row">
         <div class="col-md-6 p-3" *ngFor="let pizza of menu[7].items">
           <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
@@ -119,7 +119,7 @@
           <p class="fs-4 text-danger">Prezzo: {{ pizza.price }} €</p>
         </div>
       </div></div>
-      <div class="col-md-6 p-2" data-aos="fade-up" data-aos-duration="3000"><h1>{{menu[8].categoryName}} <span class="fs-2">🪑</span></h1>
+      <div class="col-md-6 p-2" data-aos="fade-up" data-aos-duration="3000"><h1 class="bg-dark py-2">{{menu[8].categoryName}} <span class="fs-2">🪑</span></h1>
         <div class="row">
           <div class="col-md-12 p-3" *ngFor="let pizza of menu[8].items">
             <p class="fs-4 text-dark fw-bolder">{{ pizza.name }}</p>
