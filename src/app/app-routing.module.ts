@@ -4,6 +4,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { PieroAmatoComponent } from './Components/piero-amato/piero-amato.component';
 import { OfficeComponent } from './Components/office/office.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { DasboardComponent } from './Components/dasboard/dasboard.component';
 
 const routes: Routes = [
 {
@@ -17,6 +18,10 @@ const routes: Routes = [
 {
   path:'office',
   component:OfficeComponent
+},
+{
+  path:'dashboard',
+  component:DasboardComponent
 },
 {
   path:'**',

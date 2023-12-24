@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DasboardComponent } from './Components/dasboard/dasboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     OfficeComponent,
     NotFoundComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DasboardComponent
   ],
   imports: [
     BrowserModule,
