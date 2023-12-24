@@ -16,9 +16,10 @@ user:any
 constructor(private authService:AuthService,private router:Router){}
 
 ngOnInit(): void {
+  localStorage.setItem('route','/office')
   this.logged=false;
   this.loginForm=new FormGroup({
-    email:new FormControl('',Validators.required),
+    email:new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
     password:new FormControl('',Validators.required)
   })
 
@@ -26,13 +27,13 @@ ngOnInit(): void {
    this.authService.verifyToken(localStorage.getItem('accessToken')!).subscribe((data:any)=>{
 this.user=data
 this.authService.isUserAuthenticate(true)
-this.logged=true
+this.router.navigate(['/dashboard'])
    },err=>{
     this.authService.isUserAuthenticate(false)
     this.authService.verifyRefreshToken(localStorage.getItem('refreshToken')!).subscribe((dat:any)=>{
       this.user=dat
 this.authService.isUserAuthenticate(true)
-this.logged=true
+this.router.navigate(['/dashboard'])
     })
    })
   }
@@ -46,8 +47,6 @@ this.authService.setToken(data.tokens.accessToken)
 this.authService.setRefreshToken(data.tokens.refreshToken)
 localStorage.setItem('accessToken',data.tokens.accessToken)
 localStorage.setItem('refreshToken',data.tokens.refreshToken)
-localStorage.setItem('route','/office')
-this.logged=true
     },err=>{
       console.log(err)
     })
