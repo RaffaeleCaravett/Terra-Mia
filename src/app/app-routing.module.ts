@@ -5,6 +5,7 @@ import { PieroAmatoComponent } from './Components/piero-amato/piero-amato.compon
 import { OfficeComponent } from './Components/office/office.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { DasboardComponent } from './Components/dasboard/dasboard.component';
+import { AuthGuard } from './Core/Guard/Auth.guard';
 
 const routes: Routes = [
 {
@@ -21,7 +22,8 @@ const routes: Routes = [
 },
 {
   path:'dashboard',
-  component:DasboardComponent
+  component:DasboardComponent,
+  canActivate: [AuthGuard]
 },
 {
   path:'**',

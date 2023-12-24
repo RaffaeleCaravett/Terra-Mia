@@ -275,7 +275,6 @@ i:number=0
 interval:any
 
 ngOnInit(): void {
-  console.log(this.images.length)
   this.carousel(this.i)
   Aos.init()
 this.interval=setInterval(()=>{

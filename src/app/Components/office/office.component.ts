@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogComponent } from 'src/app/Core/Shared/Dialog/dialog/dialog.component';
 import { AuthService } from 'src/app/Services/Auth.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class OfficeComponent implements OnInit{
 loginForm!:FormGroup
 logged!:boolean
 user:any
-constructor(private authService:AuthService,private router:Router){}
+constructor(private authService:AuthService,private router:Router,private dialog:MatDialog){}
 
 ngOnInit(): void {
   localStorage.setItem('route','/office')
@@ -25,15 +27,24 @@ ngOnInit(): void {
 
   if(localStorage.getItem('accessToken')&&localStorage.getItem('refreshToken')&&localStorage.getItem('route')){
    this.authService.verifyToken(localStorage.getItem('accessToken')!).subscribe((data:any)=>{
+    this.authService.setToken(localStorage.getItem('accessToken')!)
+    this.authService.setRefreshToken(localStorage.getItem('refreshToken')!)
 this.user=data
 this.authService.isUserAuthenticate(true)
 this.router.navigate(['/dashboard'])
    },err=>{
     this.authService.isUserAuthenticate(false)
     this.authService.verifyRefreshToken(localStorage.getItem('refreshToken')!).subscribe((dat:any)=>{
-      this.user=dat
+      localStorage.setItem('accessToken',dat.accessToken)
+      localStorage.setItem('refreshToken',dat.refreshToken)
+this.authService.setToken(dat.accessToken)
 this.authService.isUserAuthenticate(true)
 this.router.navigate(['/dashboard'])
+const dialog = this.dialog.open(DialogComponent,
+{
+data:err.message
+})
+dialog.afterClosed().subscribe((close:any)=>{console.log(close)})
     })
    })
   }

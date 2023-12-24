@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'terra_mia';
-  constructor(private router:Router){
-    this.router.navigate(['/office'])
+  constructor(private router:Router ){
   }
   ngOnInit(): void {
 if(localStorage.getItem('accessToken')&&localStorage.getItem('refreshToken')&&localStorage.getItem('route')){
