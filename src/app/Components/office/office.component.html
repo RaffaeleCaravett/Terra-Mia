@@ -1,1 +1,21 @@
-<p>office works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 p-4" *ngIf="logged==false">
+      <div class="border rounded italy-flag text-center py-4">
+        <h1>Benvenuto nel tuo ufficio.</h1>
+        <p>Inserisci le tue credenziali per poter effettuare qualsiasi operazione</p>
+        <div class="py-5">
+          <form [formGroup]="loginForm">
+          <label for="email" class="py-3">Email <span class="fs-2">📧</span></label>
+          <input type="text" id="email" class="form-control w-75 m-auto" placeholder="Email"
+          formControlName="email">
+          <label for="password" class="py-3">Password <span class="fs-2">🔑</span></label>
+          <input type="text" id="password" class="form-control w-75 m-auto" placeholder="Password"
+          formControlName="password">
+          <button class="btn btn-dark my-3" [disabled]="!loginForm.valid" (click)="login()"> Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
