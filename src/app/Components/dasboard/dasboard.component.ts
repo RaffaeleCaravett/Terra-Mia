@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { BillComponent } from 'src/app/Core/Shared/Dialog/bill/bill.component';
+import { OrderDialogComponent } from 'src/app/Core/Shared/Dialog/order-dialog/order-dialog.component';
 import { IngredientsService } from 'src/app/Services/Ingredients.service';
 import { OrderService } from 'src/app/Services/Order.service';
+import { ProductsService } from 'src/app/Services/Products.service';
 
 @Component({
   selector: 'app-dasboard',
@@ -14,7 +18,11 @@ export class DasboardComponent implements OnInit{
   productsPerYear:any
   productsPerMonth:any
   productsPerDay:any
-constructor(private orderService:OrderService, private ingredientsService:IngredientsService){
+  sala:boolean=false
+  pizzeria:boolean=false
+  productsArray:any[]=[]
+  ingredientsArray:any[]=[]
+constructor(private orderService:OrderService, private ingredientsService:IngredientsService, private productService:ProductsService,private matDialog:MatDialog){
 
 }
   ngOnInit(): void {
@@ -34,8 +42,25 @@ constructor(private orderService:OrderService, private ingredientsService:Ingred
 
 
     this.ingredientsService.getAll().subscribe((ingredients:any)=>{
-      console.log(ingredients)
+      this.ingredientsArray=ingredients
+    })
+
+    this.productService.getAll().subscribe((products:any)=>{
+      this.productsArray = products
     })
   }
+
+inserisciOrdine(){
+   const dialog = this.matDialog.open(OrderDialogComponent,{data:{
+    products:this.productsArray,
+    ingredients:this.ingredientsArray
+   }})
+    dialog.afterClosed().subscribe((close:any)=>{console.log(close)})
+  }
+
+chiudiOrdine(){
+const dialog = this.matDialog.open(BillComponent,{data:this.ordersPerDay})
+dialog.afterClosed().subscribe((close:any)=>{console.log(close)})
+}
 
 }

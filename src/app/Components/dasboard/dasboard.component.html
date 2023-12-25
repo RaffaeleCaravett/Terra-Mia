@@ -34,21 +34,59 @@
   </div>
 <div class="col-md-12 p-3">
   <h1 class="bg-dark p-2"><span class="text-success">Pizzeria </span> <span class="text-white"> Terra </span><span class="text-danger"> Mia</span></h1>
-<button class="btn btn-success m-2">Sala</button>
-<button class="btn btn-danger m-2"> Pizzeria</button>
+<button class="btn btn-success m-2" (click)="sala=true;pizzeria=false">Sala</button>
+<button class="btn btn-danger m-2" (click)="sala=false;pizzeria=true"> Pizzeria</button>
+<div class="row">
+  <div class="col-md-12" *ngIf="sala">
+    <div class="row">
+  <h1>Sala</h1>
+  <div class="col-md-3" *ngFor="let o of ordersPerDay">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Ordine - {{o.id}}</h5>
+        <p class="card-text">Coperti: {{o.coperti}} | Tavolo :{{o.tavolo}}</p>
+        <p class="text-success" *ngIf="o.state&&o.state=='IN_CORSO'">{{o.state}}</p>
+                <p class="text-danger" *ngIf="o.state&&o.state=='PAGATO'">{{o.state}}</p>
+                <div class="p-1 border rounded bg-light">
+<p *ngFor="let p of o.prodotti">p.nome</p>
+                </div>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="ordersPerDay.length==0">Non ci sono ancora ordini</div>
+    </div>
+</div>
+  <div class="col-md-12" *ngIf="pizzeria">
+    <div class="row">
+  <h1>Pizzeria</h1>
+  <div class="col-md-3" *ngFor="let o of ordersPerDay">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Ordine - {{o.id}}</h5>
+        <p class="card-text">Coperti: {{o.coperti}} | Tavolo :{{o.tavolo}}</p>
+        <p class="text-success" *ngIf="o.state&&o.state=='IN_CORSO'">{{o.state}}</p>
+                <p class="text-danger" *ngIf="o.state&&o.state=='PAGATO'">{{o.state}}</p>
+                <div class="p-1 border rounded bg-light">
+<p *ngFor="let p of o.prodotti">p.nome</p>
+                </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="ordersPerDay.length==0">Non ci sono ancora ordini</div>
+    </div>
+</div>
+</div>
 </div>
 
     <div class="col-md-12 py-5">
      <h1> Cosa vuoi fare? </h1>
   </div>
-  <div class="col-md-4 py-4">
-    <button class="btn btn-success">Inserisci un ordine</button>
+  <div class="col-md-6 py-4">
+    <button class="btn btn-success" (click)="inserisciOrdine()">Inserisci un ordine</button>
   </div>
-  <div class="col-md-4 py-4">
-    <button class="btn btn-danger">Fai il conto</button>
-  </div>
-  <div class="col-md-4 py-4">
-    <button class="btn btn-warning">Visualizza Ordini</button>
+  <div class="col-md-6 py-4">
+    <button class="btn btn-danger" (click)="chiudiOrdine()">Fai il conto</button>
   </div>
   </div>
 

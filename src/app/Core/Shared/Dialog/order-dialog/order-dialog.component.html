@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Inserisci un ordine</h2>
+<mat-dialog-content>
+<form [formGroup]="insertOrder">
+<label for="coperti">N° coperti :</label>
+<input type="number" id="coperti" formControlName="coperti" class="form-control p-1">
+<label for="tavolo">N° tavolo :</label>
+<input type="number" id="tavolo" formControlName="tavolo" class="form-control p-1">
+</form>
+<div *ngIf="entryAdded.length>0" class="p-2">
+  <h2>Entry</h2>
+  <div *ngFor="let i of entryAdded">
+  <p>{{i.nome}} - {{i.price }} €  <span><button class="btn btn-primary m-1 fs-4"(click)="modify(i)">✏️</button> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
+  </div>
+  </div>
+<div *ngIf="itemsAdded.length>0" class="p-2">
+  <h2>Pizze</h2>
+<div *ngFor="let i of itemsAdded">
+  <p>{{i.nome}} - {{i.price }} €  <span><button class="btn btn-primary m-1 fs-4"(click)="modify(i)">✏️</button> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
+</div>
+</div>
+<div *ngIf="drinkAdded.length>0" class="p-2">
+  <h2>Drink</h2>
+  <div *ngFor="let i of drinkAdded">
+  <p>{{i.nome}} - {{i.price }} €  <span> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
+  </div>
+  </div>  <div class="row">
+    <div class="col-md-4">
+      <button mat-button [matMenuTriggerFor]="menu" class="m-1">Food</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngFor="let p of foodArray" (click)="addToFood(p)">{{p.nome}}
+  <p style="font-size: 12px;"><span *ngFor="let i of p.ingredients">{{i.nome}} , </span></p>
+  </button>
+</mat-menu>
+    </div>
+    <div class="col-md-4">
+      <button mat-button [matMenuTriggerFor]="menu1" class="m-1">Drink</button>
+<mat-menu #menu1="matMenu" >
+  <button mat-menu-item *ngFor="let p of drinkArray" (click)="addToDrink(p)">{{p.nome}}
+  <p style="font-size: 12px;"><span *ngFor="let i of p.ingredients">{{i.nome}} , </span></p>
+  </button>
+</mat-menu>
+    </div>
+  </div>
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Chiudi</button>
+</mat-dialog-actions>

@@ -17,6 +17,10 @@ import { DasboardComponent } from './Components/dasboard/dasboard.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './Core/Shared/Dialog/dialog/dialog.component'; // Import the MatDialogModule
 import { AuthInterceptor } from './Core/Auth.interceptor';
+import { OrderDialogComponent } from './Core/Shared/Dialog/order-dialog/order-dialog.component';
+import { BillComponent } from './Core/Shared/Dialog/bill/bill.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,9 @@ import { AuthInterceptor } from './Core/Auth.interceptor';
     NavbarComponent,
     FooterComponent,
     DasboardComponent,
-    DialogComponent
+    DialogComponent,
+    OrderDialogComponent,
+    BillComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { AuthInterceptor } from './Core/Auth.interceptor';
     MatIconModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
