@@ -40,11 +40,11 @@ this.router.navigate(['/dashboard'])
 this.authService.setToken(dat.accessToken)
 this.authService.isUserAuthenticate(true)
 this.router.navigate(['/dashboard'])
-const dialog = this.dialog.open(DialogComponent,
-{
-data:err.message
-})
-dialog.afterClosed().subscribe((close:any)=>{console.log(close)})
+// const dialog = this.dialog.open(DialogComponent,
+// {
+// data:err.message
+// })
+// dialog.afterClosed().subscribe((close:any)=>{console.log(close)})
     })
    })
   }
