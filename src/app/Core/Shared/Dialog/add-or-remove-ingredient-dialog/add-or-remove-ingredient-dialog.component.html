@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Modifica Prodotto</h2>
+<mat-dialog-content>
+<div class="p-3">
+<h3 class="fw-bold">Il prodotto che hai scelto :</h3>
+{{data.nome}}
+<p *ngIf="data.ingredients">
+<span *ngFor="let i of data.ingredients">{{i.nome}} ,</span></p>
+<p class="p-2">
+  <button mat-button [matMenuTriggerFor]="menu" class="m-1">Aggiungi</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngFor="let p of ingredients" (click)="addToProductIngredients(p)">{{p.nome}}
+  </button>
+</mat-menu>
+  <button mat-button [matMenuTriggerFor]="menu1" class="m-1">Togli</button>
+<mat-menu #menu1="matMenu">
+  <button mat-menu-item *ngFor="let p of data.ingredients" (click)="removeFromProductIngredients(p)">{{p.nome}}
+  </button>
+</mat-menu>
+</p>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Modifica</button>
+  <button mat-button (click)="closeD()">Chiudi</button>
+
+</mat-dialog-actions>

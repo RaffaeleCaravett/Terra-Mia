@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddOrRemoveIngredientDialogComponent } from '../add-or-remove-ingredient-dialog/add-or-remove-ingredient-dialog.component';
+import { ProductsService } from 'src/app/Services/Products.service';
+import { OrderService } from 'src/app/Services/Order.service';
 
 @Component({
   selector: 'app-order-dialog',
@@ -20,7 +23,10 @@ drinkArray:any[]=[]
 
 constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialog :MatDialog,
+    private productService:ProductsService,
+private orderService:OrderService
   ) { }
 
   closeDialog(): void {
@@ -36,8 +42,8 @@ this.drinkArray.push(i)
       }
     }
 this.insertOrder=new FormGroup({
-coperti: new FormControl(0,Validators.required),
-tavolo: new FormControl(0,Validators.required)
+coperti: new FormControl(null,Validators.required),
+tavolo: new FormControl(null,Validators.required)
 })
   }
 
@@ -75,7 +81,13 @@ this.drinkAdded.push(drink)
       this.drinkAdded = this.removeItemById(this.drinkAdded, item);
     }
   }
-  modify(item:any){}
+  modify(item:any){
+   const addOrRemoveDialog = this.dialog.open(AddOrRemoveIngredientDialogComponent,{data:item})
+   addOrRemoveDialog.afterClosed().subscribe((closed:any)=>{if(closed){
+ item=closed
+   }
+   })
+  }
 
   removeItemById(array: any[], itemToRemove: any): any[] {
     let removed = false;
@@ -87,4 +99,51 @@ this.drinkAdded.push(drink)
       return true;
     });
   }
+
+
+  sendOrder(): void {
+if(this.insertOrder.valid){
+  let modifiedP:any[]=[]
+for(let p of this.itemsAdded){
+  let ingredients:any[]=[];
+  for(let i of p.ingredients){
+    ingredients.push(i.id)
+  }
+  this.productService.saveModifiedProduct(
+    {nome:p.nome,
+productType:p.productType,
+price:p.price,
+ingredients:ingredients,
+requests:p.requests
+    }
+    ).subscribe((p:any)=>{
+modifiedP.push(p.id)
+    })
+for(let d of this.drinkAdded){
+  modifiedP.push(d.id)
+}
+for(let e of this.entryAdded){
+  modifiedP.push(e.id)
+}
+setTimeout(()=>{
+  console.log(modifiedP)
+this.orderService.save(
+  {
+    coperti:this.insertOrder.controls['coperti'].value,
+    products:modifiedP,
+    user:1,
+    state:"IN_CORSO",
+    tavolo:String(this.insertOrder.controls['tavolo'].value)
+  }
+  ).subscribe((data:any)=>{
+    console.log(data)
+    this.dialogRef.close();
+  })
+},3000)
+
+
+}
+}
+  }
+
 }
