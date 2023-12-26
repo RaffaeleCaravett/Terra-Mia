@@ -11,7 +11,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DasboardComponent } from './Components/dasboard/dasboard.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -21,6 +21,7 @@ import { OrderDialogComponent } from './Core/Shared/Dialog/order-dialog/order-di
 import { BillComponent } from './Core/Shared/Dialog/bill/bill.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { AddOrRemoveIngredientDialogComponent } from './Core/Shared/Dialog/add-or-remove-ingredient-dialog/add-or-remove-ingredient-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatButtonModule} from '@angular/material/button';
     DasboardComponent,
     DialogComponent,
     OrderDialogComponent,
-    BillComponent
+    BillComponent,
+    AddOrRemoveIngredientDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     MatDialogModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

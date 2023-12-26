@@ -58,9 +58,15 @@ this.authService.setToken(data.tokens.accessToken)
 this.authService.setRefreshToken(data.tokens.refreshToken)
 localStorage.setItem('accessToken',data.tokens.accessToken)
 localStorage.setItem('refreshToken',data.tokens.refreshToken)
+this.authService.isUserAuthenticate(true)
+this.router.navigate(['/dashboard'])
     },err=>{
-      console.log(err)
-    })
+const dialogRef = this.dialog.open(DialogComponent,{data:err.error.message})
+dialogRef.afterClosed().subscribe((data:any)=>{
+  console.log(data)
+})
+})
+
   }
 }
 

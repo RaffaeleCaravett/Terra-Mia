@@ -12,6 +12,7 @@ export class ProductsService {
 
 
    private products = "/product"
+   private modifiedProducts = "/modifiedProduct"
 
 
   save(body:{}){
@@ -28,5 +29,8 @@ updateById(id:number,body:{}){
 }
 deleteById(id:number){
   return this.httpModule.delete(environment.API_URL+this.products+`${id}`)
+}
+saveModifiedProduct(body:{}){
+  return this.httpModule.post(environment.API_URL+this.modifiedProducts+'/save',body)
 }
 }

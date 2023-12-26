@@ -24,4 +24,10 @@ getOrderByYearAndMonth(year:number,month:number){
 getOrderByYearAndMonthAndDay(year:number,month:number,day:number){
   return this.http.get(environment.API_URL+this.order+`/byDate?year=${year}&month=${month}&day=${day}`)
 }
+save(body:any){
+  return this.http.post(environment.API_URL+this.order+'/save',body)
+}
+updateOrder(id:number,body:any){
+  return this.http.put(environment.API_URL+this.order+`/${id}`,body)
+}
 }

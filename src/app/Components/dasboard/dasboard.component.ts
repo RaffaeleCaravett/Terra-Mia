@@ -31,11 +31,11 @@ constructor(private orderService:OrderService, private ingredientsService:Ingred
       this.ordersPerYear=year
       this.productsPerYear=year.products
     })
-    this.orderService.getOrderByYearAndMonth(date.getFullYear(),date.getMonth()).subscribe((month:any)=>{
+    this.orderService.getOrderByYearAndMonth(date.getFullYear(),date.getMonth()+1).subscribe((month:any)=>{
       this.ordersPerMonth=month
       this.productsPerMonth=month.products
     })
-    this.orderService.getOrderByYearAndMonthAndDay(date.getFullYear(),date.getMonth(),date.getDay()).subscribe((day:any)=>{
+    this.orderService.getOrderByYearAndMonthAndDay(date.getFullYear(),date.getMonth()+1,date.getDate()).subscribe((day:any)=>{
       this.ordersPerDay=day
       this.productsPerDay=day.products
     })
@@ -62,5 +62,21 @@ chiudiOrdine(){
 const dialog = this.matDialog.open(BillComponent,{data:this.ordersPerDay})
 dialog.afterClosed().subscribe((close:any)=>{console.log(close)})
 }
-
+paga(order:any){
+  let products:any[]=[];
+  for (let p of order.prodotti){
+    products.push(p.id)
+  }
+this.orderService.updateOrder(order.id,
+  {
+coperti:order.coperti,
+products:products,
+user:1,
+state:'PAGATO',
+tavolo:order.tavolo
+  }
+  ).subscribe((data:any)=>{
+location.reload()
+  })
+}
 }

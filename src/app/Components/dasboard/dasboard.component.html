@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="col-md-4 p-3">
-    <h2>Prodotti venduti <span class="fs-3"> 🍕 🍷 🍺</span></h2>
+    <h2>Prodotti venduti <span class="fs-3"> 🍕 </span></h2>
     <div class="border shadow rounded bg-light" style="min-height: 162px;">
     <ul class="fs-5 text-start">
       <li>Totale prodotti venduti in questo anno : {{productsPerYear?productsPerYear.length:0}}</li>
@@ -48,9 +48,9 @@
         <p class="text-success" *ngIf="o.state&&o.state=='IN_CORSO'">{{o.state}}</p>
                 <p class="text-danger" *ngIf="o.state&&o.state=='PAGATO'">{{o.state}}</p>
                 <div class="p-1 border rounded bg-light">
-<p *ngFor="let p of o.prodotti">p.nome</p>
+<p *ngFor="let p of o.prodotti">{{p.nome}} - {{p.description ||1}}</p>
                 </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a class="btn btn-primary m-1" (click)="paga(o)" *ngIf="o.state&&o.state=='IN_CORSO'">Paga</a>
       </div>
     </div>
   </div>
@@ -68,7 +68,11 @@
         <p class="text-success" *ngIf="o.state&&o.state=='IN_CORSO'">{{o.state}}</p>
                 <p class="text-danger" *ngIf="o.state&&o.state=='PAGATO'">{{o.state}}</p>
                 <div class="p-1 border rounded bg-light">
-<p *ngFor="let p of o.prodotti">p.nome</p>
+<p *ngFor="let p of o.prodotti">
+  <span *ngIf="p.productType=='PIZZE_CLASSICHE'||p.productType=='PIZZE_FOOD_PORN'||p.productType=='PIZZE_DESSERT'||p.productType=='FRITTI'||p.productType=='SPECIALITÀ'">
+    {{p.nome}} - {{p.description ||1}}
+ <span style="font-size: 12px;" *ngFor="let i of p.ingredients">{{i.nome}} , </span></span></p>
+
                 </div>
       </div>
     </div>
@@ -80,13 +84,10 @@
 </div>
 
     <div class="col-md-12 py-5">
-     <h1> Cosa vuoi fare? </h1>
+     <h1> Inserisci un ordine! </h1>
   </div>
-  <div class="col-md-6 py-4">
-    <button class="btn btn-success" (click)="inserisciOrdine()">Inserisci un ordine</button>
-  </div>
-  <div class="col-md-6 py-4">
-    <button class="btn btn-danger" (click)="chiudiOrdine()">Fai il conto</button>
+  <div class="col-md-12 py-4">
+    <button class="btn btn-success" (click)="inserisciOrdine()">Inserisci</button>
   </div>
   </div>
 
