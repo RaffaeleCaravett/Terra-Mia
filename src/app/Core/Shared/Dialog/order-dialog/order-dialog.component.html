@@ -9,19 +9,25 @@
 <div *ngIf="entryAdded.length>0" class="p-2">
   <h2>Entry</h2>
   <div *ngFor="let i of entryAdded">
-  <p>{{i.nome}} - {{i.price }} €  <span> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
+  <p>{{i.nome}} - {{i.price }} €
+     <!-- <input type="number" class="w-50"  #entry  (change)="updateQuantity(i,entry.value,entry)"> -->
+     <span> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
   </div>
   </div>
 <div *ngIf="itemsAdded.length>0" class="p-2">
   <h2>Pizze</h2>
 <div *ngFor="let i of itemsAdded">
-  <p>{{i.nome}} - {{i.price }} €  <span><button class="btn btn-primary m-1 fs-4"(click)="modify(i)">✏️</button> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
+  <p>{{i.nome}} - {{i.price }} €
+     <!-- <input type="number" class="w-50"  #item   (change)="updateQuantity(i,item.value,item)"> -->
+    <span><button class="btn btn-primary m-1 fs-4"(click)="modify(i)">✏️</button> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
 </div>
 </div>
 <div *ngIf="drinkAdded.length>0" class="p-2">
   <h2>Drink</h2>
   <div *ngFor="let i of drinkAdded">
-  <p>{{i.nome}} - {{i.price }} €  <span> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
+  <p>{{i.nome}} - {{i.price }} €
+     <!-- <input type="number" class="w-50"  #drink   (change)="updateQuantity(i,drink.value,drink)"> -->
+    <span> <button class="btn btn-danger m-1 fs-4"(click)="remove(i)">🗑️</button></span></p>
   </div>
   </div>  <div class="row">
     <div class="col-md-4">

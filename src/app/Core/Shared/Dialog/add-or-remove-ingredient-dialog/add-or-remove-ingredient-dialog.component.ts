@@ -40,7 +40,6 @@ this.data.price+=0
 }else{
   this.data.price+=1
 }
-console.log(this.data.price)
 }
 removeFromProductIngredients(p:any){
 this.data.ingredients=this.removeItemById(this.data.ingredients,p)
@@ -53,7 +52,6 @@ this.data.price+=0
 }else{
   this.data.price-=1
 }
-console.log(this.data.price)
 }
 
 

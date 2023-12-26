@@ -1,10 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddOrRemoveIngredientDialogComponent } from '../add-or-remove-ingredient-dialog/add-or-remove-ingredient-dialog.component';
 import { ProductsService } from 'src/app/Services/Products.service';
 import { OrderService } from 'src/app/Services/Order.service';
+import { cloneDeep } from 'lodash';
+
 
 @Component({
   selector: 'app-order-dialog',
@@ -20,7 +22,7 @@ menu: any;
 menu1: any;
 foodArray:any[]=[]
 drinkArray:any[]=[]
-
+optionArray:any[]=["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
 constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -82,9 +84,32 @@ this.drinkAdded.push(drink)
     }
   }
   modify(item:any){
-   const addOrRemoveDialog = this.dialog.open(AddOrRemoveIngredientDialogComponent,{data:item})
+    const updatedItem = cloneDeep(item);
+     const addOrRemoveDialog = this.dialog.open(AddOrRemoveIngredientDialogComponent,{data:updatedItem})
    addOrRemoveDialog.afterClosed().subscribe((closed:any)=>{if(closed){
- item=closed
+ const updatedItem = closed ;
+ if (
+  item.productType !== 'SPECIALITÀ' &&
+  item.productType !== 'FRITTI' &&
+  item.productType !== 'BIBITE' &&
+  item.productType !== 'VINI' &&
+  item.productType !== 'COPERTO' &&
+  item.productType !== 'PER_CONCLUDERE'
+) {
+  this.itemsAdded.push(updatedItem)
+} else if (
+  item.productType !== 'PIZZE_CLASSICHE' &&
+  item.productType !== 'PIZZE_FOOD_PORN' &&
+  item.productType !== 'BIBITE' &&
+  item.productType !== 'VINI' &&
+  item.productType !== 'COPERTO' &&
+  item.productType !== 'PER_CONCLUDERE'
+) {
+  this.entryAdded.push(updatedItem)
+} else {
+  this.drinkAdded.push(updatedItem)
+}
+this.remove(item)
    }
    })
   }
@@ -119,14 +144,33 @@ requests:p.requests
     ).subscribe((p:any)=>{
 modifiedP.push(p.id)
     })
+
+}
 for(let d of this.drinkAdded){
-  modifiedP.push(d.id)
+  this.productService.saveModifiedProduct(
+    {nome:d.nome,
+productType:d.productType,
+price:d.price,
+ingredients:[],
+requests:d.requests
+    }
+    ).subscribe((p:any)=>{
+modifiedP.push(p.id)
+    })
 }
 for(let e of this.entryAdded){
-  modifiedP.push(e.id)
+  this.productService.saveModifiedProduct(
+    {nome:e.nome,
+productType:e.productType,
+price:e.price,
+ingredients:[],
+requests:e.requests
+    }
+    ).subscribe((p:any)=>{
+modifiedP.push(p.id)
+    })
 }
 setTimeout(()=>{
-  console.log(modifiedP)
 this.orderService.save(
   {
     coperti:this.insertOrder.controls['coperti'].value,
@@ -136,14 +180,75 @@ this.orderService.save(
     tavolo:String(this.insertOrder.controls['tavolo'].value)
   }
   ).subscribe((data:any)=>{
-    console.log(data)
     this.dialogRef.close();
+    location.reload();
   })
-},3000)
-
-
-}
+},4000)
 }
   }
+
+
+// updateQuantity(item: any, quantity: string ,select:any) {
+//  let originalPrice= item.price/item.description||item.price/1
+//  console.log(item.productType)
+//   const updatedItem = { ...item };
+// if(item.description!=undefined){
+//   if(select.value>item.description){
+// for(let i =item.description||1 ;i<=select.value;i++){
+// if(i<select.value){
+//   updatedItem.price+=originalPrice
+// }
+// }
+//   }else if(select.value<item.description){
+//     for(let i=item.description||1 ;i>=select.value;i--){
+// if(i>select.value){
+//   updatedItem.price-=originalPrice
+// }
+//     }
+//   }else{
+//     updatedItem.price=item.price
+//   }
+// }else{
+//   if(select.value>1){
+// for(let i =item.description||1 ;i<=select.value;i++){
+// if(i<select.value){
+//   updatedItem.price+=originalPrice
+// }
+// }
+//   }else if(select.value<1){
+//     for(let i=item.description||1 ;i>=select.value;i--){
+// if(i>select.value){
+//   updatedItem.price-=originalPrice
+// }
+//     }
+//   }else{
+//     updatedItem.price=item.price
+//   }
+// }
+
+//   updatedItem.description = quantity;
+//   if (
+//     item.productType !== 'SPECIALITÀ' &&
+//     item.productType !== 'FRITTI' &&
+//     item.productType !== 'BIBITE' &&
+//     item.productType !== 'VINI' &&
+//     item.productType !== 'COPERTO' &&
+//     item.productType !== 'PER_CONCLUDERE'
+//   ) {
+//     this.itemsAdded.push(updatedItem)
+//   } else if (
+//     item.productType !== 'PIZZE_CLASSICHE' &&
+//     item.productType !== 'PIZZE_FOOD_PORN' &&
+//     item.productType !== 'BIBITE' &&
+//     item.productType !== 'VINI' &&
+//     item.productType !== 'COPERTO' &&
+//     item.productType !== 'PER_CONCLUDERE'
+//   ) {
+//     this.entryAdded.push(updatedItem)
+//   } else {
+//     this.drinkAdded.push(updatedItem)
+//   }
+// this.remove(item)
+// }
 
 }
