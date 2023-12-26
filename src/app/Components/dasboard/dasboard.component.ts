@@ -12,12 +12,15 @@ import { ProductsService } from 'src/app/Services/Products.service';
   styleUrls: ['./dasboard.component.scss']
 })
 export class DasboardComponent implements OnInit{
-  ordersPerYear:any
-  ordersPerMonth:any
-  ordersPerDay:any
-  productsPerYear:any
-  productsPerMonth:any
-  productsPerDay:any
+  ordersPerYear:any[]=[]
+  ordersPerMonth:any[]=[]
+  ordersPerDay:any[]=[]
+  productsPerYear:any[]=[]
+  productsPerMonth:any[]=[]
+  productsPerDay:any[]=[]
+  earningsPerYear:number=0
+  earningsPerMonth:number=0
+  earningsPerDay:number=0
   sala:boolean=false
   pizzeria:boolean=false
   productsArray:any[]=[]
@@ -29,15 +32,30 @@ constructor(private orderService:OrderService, private ingredientsService:Ingred
     let date = new Date();
     this.orderService.getOrderByYear(date.getFullYear()).subscribe((year:any)=>{
       this.ordersPerYear=year
-      this.productsPerYear=year.products
+      for(let i=0;i<year.length;i++){
+        for(let p of year[i].prodotti){
+        this.productsPerYear.push(p)
+      }
+      this.earningsPerYear+=Number(year[i].totale)
+    }
     })
     this.orderService.getOrderByYearAndMonth(date.getFullYear(),date.getMonth()+1).subscribe((month:any)=>{
       this.ordersPerMonth=month
-      this.productsPerMonth=month.products
+      for(let i=0;i<month.length;i++){
+      for(let p of month[i].prodotti){
+        this.productsPerMonth.push(p)
+      }
+      this.earningsPerMonth+=Number(month[i].totale)
+    }
     })
     this.orderService.getOrderByYearAndMonthAndDay(date.getFullYear(),date.getMonth()+1,date.getDate()).subscribe((day:any)=>{
       this.ordersPerDay=day
-      this.productsPerDay=day.products
+      for(let i=0;i<day.length;i++){
+      for(let p of day[i].prodotti){
+        this.productsPerDay.push(p)
+      }
+      this.earningsPerDay+=Number(day[i].totale)
+    }
     })
 
 
