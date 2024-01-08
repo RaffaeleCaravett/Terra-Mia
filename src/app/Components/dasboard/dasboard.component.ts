@@ -56,6 +56,7 @@ constructor(private orderService:OrderService, private ingredientsService:Ingred
       for(let p of month[i].prodotti){
         this.productsPerMonth.push(p)
       }
+      console.log(month[i].totale)
       this.earningsPerMonth+=Number(month[i].totale)
     }
     })
@@ -110,17 +111,25 @@ location.reload()
 }
 modify(o:any){
   const dialogRef=this.matDialog.open(ModifyOrderComponent,{data:o})
+  dialogRef.afterClosed().subscribe((result:any)=>{
+    if(result=='modify'){
+      window.alert('L\'ordine '+  o.id +' è stato modificato correttamente');
+      this.ngOnInit()
+    }else{
+      window.alert('L\'ordine '+  o.id +'  non è stato modificato');
+    }
+  })
 }
 cancel(id:number){
   const dialogRef =this.matDialog.open(ConfirmDeleteComponent)
 dialogRef.afterClosed().subscribe((result:any)=>{
   if(result=='yes'){
 this.orderService.deleteOrder(id).subscribe((data:any)=>{
-  this.ngOnInit()
   window.alert('L\'ordine '+  id +' è stato cancellato correttamente');
+  this.ngOnInit()
 })
   }else{
-      window.alert('L\'ordine non è stato cancellato');
+      window.alert('L\'ordine '+  id +'  non è stato cancellato');
   }
 })
 }

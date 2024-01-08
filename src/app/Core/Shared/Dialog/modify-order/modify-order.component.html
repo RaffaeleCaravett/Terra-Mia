@@ -1,1 +1,22 @@
-<p>modify-order works!</p>
+<h2 mat-dialog-title>Stai modificando l'ordine {{data.id}}</h2>
+<mat-dialog-content>
+<form [formGroup]="modifyForm">
+<label for="">Coperti : </label>
+<input type="number" class="form-control" formControlName="coperti">
+<label for="">Tavolo : </label>
+<input type="text" class="form-control" formControlName="tavolo">
+<label for="">Note : </label>
+<input type="text" class="form-control" formControlName="modify">
+<label for="">Totale : </label>
+<input type="text" class="form-control" formControlName="totale">
+</form>
+<h2 class="py-3">Prodotti : </h2>
+<p *ngFor="let p of prodotti">{{p.nome}}
+<button class="btn mx-1" (click)="removeFromProducts(p)">
+  🗑️
+</button></p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="modify()" class="text-danger">Modifica</button>
+  <button mat-button (click)="no()" >Indietro</button>
+</mat-dialog-actions>
