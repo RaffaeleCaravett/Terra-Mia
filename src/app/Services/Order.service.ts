@@ -30,4 +30,7 @@ save(body:any){
 updateOrder(id:number,body:any){
   return this.http.put(environment.API_URL+this.order+`/${id}`,body)
 }
+deleteOrder(id:number){
+  return this.http.delete(environment.API_URL+this.order+'/'+id)
+}
 }

@@ -22,6 +22,8 @@ import { BillComponent } from './Core/Shared/Dialog/bill/bill.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { AddOrRemoveIngredientDialogComponent } from './Core/Shared/Dialog/add-or-remove-ingredient-dialog/add-or-remove-ingredient-dialog.component';
+import { ConfirmDeleteComponent } from './Core/Shared/Dialog/confirm-delete/confirm-delete.component';
+import { ModifyOrderComponent } from './Core/Shared/Dialog/modify-order/modify-order.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AddOrRemoveIngredientDialogComponent } from './Core/Shared/Dialog/add-o
     DialogComponent,
     OrderDialogComponent,
     BillComponent,
-    AddOrRemoveIngredientDialogComponent
+    AddOrRemoveIngredientDialogComponent,
+    ConfirmDeleteComponent,
+    ModifyOrderComponent
   ],
   imports: [
     BrowserModule,

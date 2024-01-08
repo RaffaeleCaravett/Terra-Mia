@@ -43,13 +43,15 @@
   <div class="col-md-3" *ngFor="let o of ordersPerDay">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Ordine - {{o.id}}</h5>
+        <h5 class="card-title">Ordine - {{o.id}} <button class="btn mx-1" (click)="modify(o)">🖋️</button> <button class="btn mx-1" (click)="cancel(o.id)">🗑️</button></h5>
         <p class="card-text">Coperti: {{o.coperti}} | Tavolo :{{o.tavolo}}</p>
         <p class="text-success" *ngIf="o.state&&o.state=='IN_CORSO'">{{o.state}}</p>
                 <p class="text-danger" *ngIf="o.state&&o.state=='PAGATO'">{{o.state}}</p>
                 <div class="p-1 border rounded bg-light">
 <p *ngFor="let p of o.prodotti">{{p.nome}} - {{p.description ||1}}</p>
+<p class="p-2"><span>Modifiche : </span> {{o.modify}}</p>
                 </div>
+
         <a class="btn btn-primary m-1" (click)="paga(o)" *ngIf="o.state&&o.state=='IN_CORSO'">Paga</a>
       </div>
     </div>
@@ -63,7 +65,7 @@
   <div class="col-md-3" *ngFor="let o of ordersPerDay">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Ordine - {{o.id}}</h5>
+        <h5 class="card-title">Ordine - {{o.id}} <button class="btn mx-1" (click)="modify(o)">🖋️</button></h5>
         <p class="card-text">Coperti: {{o.coperti}} | Tavolo :{{o.tavolo}}</p>
         <p class="text-success" *ngIf="o.state&&o.state=='IN_CORSO'">{{o.state}}</p>
                 <p class="text-danger" *ngIf="o.state&&o.state=='PAGATO'">{{o.state}}</p>
@@ -72,7 +74,7 @@
   <span *ngIf="p.productType=='PIZZE_CLASSICHE'||p.productType=='PIZZE_FOOD_PORN'||p.productType=='PIZZE_DESSERT'||p.productType=='FRITTI'||p.productType=='SPECIALITÀ'">
     {{p.nome}} - {{p.description ||1}}
  <span style="font-size: 12px;" *ngFor="let i of p.ingredients">{{i.nome}} , </span></span></p>
-
+ <p class="p-2"><span>Modifiche : </span> {{o.modify}}</p>
                 </div>
       </div>
     </div>

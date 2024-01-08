@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BillComponent } from 'src/app/Core/Shared/Dialog/bill/bill.component';
+import { ConfirmDeleteComponent } from 'src/app/Core/Shared/Dialog/confirm-delete/confirm-delete.component';
+import { ModifyOrderComponent } from 'src/app/Core/Shared/Dialog/modify-order/modify-order.component';
 import { OrderDialogComponent } from 'src/app/Core/Shared/Dialog/order-dialog/order-dialog.component';
 import { IngredientsService } from 'src/app/Services/Ingredients.service';
 import { OrderService } from 'src/app/Services/Order.service';
@@ -30,6 +32,15 @@ constructor(private orderService:OrderService, private ingredientsService:Ingred
 }
   ngOnInit(): void {
     let date = new Date();
+   this.ordersPerYear=[]
+ this.ordersPerMonth=[]
+ this.ordersPerDay=[]
+ this.productsPerYear=[]
+ this.productsPerMonth=[]
+ this.productsPerDay=[]
+ this.earningsPerYear=0
+ this.earningsPerMonth=0
+ this.earningsPerDay=0
     this.orderService.getOrderByYear(date.getFullYear()).subscribe((year:any)=>{
       this.ordersPerYear=year
       for(let i=0;i<year.length;i++){
@@ -96,5 +107,21 @@ tavolo:order.tavolo
   ).subscribe((data:any)=>{
 location.reload()
   })
+}
+modify(o:any){
+  const dialogRef=this.matDialog.open(ModifyOrderComponent,{data:o})
+}
+cancel(id:number){
+  const dialogRef =this.matDialog.open(ConfirmDeleteComponent)
+dialogRef.afterClosed().subscribe((result:any)=>{
+  if(result=='yes'){
+this.orderService.deleteOrder(id).subscribe((data:any)=>{
+  this.ngOnInit()
+  window.alert('L\'ordine '+  id +' è stato cancellato correttamente');
+})
+  }else{
+      window.alert('L\'ordine non è stato cancellato');
+  }
+})
 }
 }
