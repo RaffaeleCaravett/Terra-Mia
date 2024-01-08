@@ -15,6 +15,7 @@ import { cloneDeep } from 'lodash';
 })
 export class OrderDialogComponent implements OnInit{
 insertOrder!:FormGroup
+note!:FormGroup
 itemsAdded:any[]=[]
 entryAdded:any[]=[]
 drinkAdded:any[]=[]
@@ -46,6 +47,9 @@ this.drinkArray.push(i)
 this.insertOrder=new FormGroup({
 coperti: new FormControl(null,Validators.required),
 tavolo: new FormControl(null,Validators.required)
+})
+this.note=new FormGroup({
+  note:new FormControl('')
 })
   }
 
@@ -177,7 +181,8 @@ this.orderService.save(
     products:modifiedP,
     user:1,
     state:"IN_CORSO",
-    tavolo:String(this.insertOrder.controls['tavolo'].value)
+    tavolo:String(this.insertOrder.controls['tavolo'].value),
+    modify:this.note.controls['note'].value
   }
   ).subscribe((data:any)=>{
     this.dialogRef.close();
